@@ -21,30 +21,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ConsoleController.class)
 public class ConsoleControllerTests {
 
-    private ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
-    private List<Console> consoleList;
 
     @MockBean
     private ConsoleRepository consoleRepository;
 
-
-    private LocalDate date;
-
     // Testing POST /consoles/
-
-//    console_id int primary key auto_increment,
-//    model varchar(50) not null,
-//    manufacturer varchar(50) not null,
-//    memory_amount varchar(20),
-//    processor varchar(20),
-//    price decimal(5, 2) not null,
-//    quantity int not null
     @Test
     public void shouldReturnConsole() throws Exception {
-
-
         Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
@@ -53,16 +39,7 @@ public class ConsoleControllerTests {
         console.setPrice(BigDecimal.valueOf(499.99));
         console.setQuantity(1);
 
-        String inputJson = mapper.writeValueAsString(console);
-        Console console2 = new Console();
-        console2.setModel("2");
-        console2.setManufacturer("Sony");
-        console2.setMemoryAmount("infinite");
-        console2.setProcessor("processor");
-        console2.setPrice(BigDecimal.valueOf(499.99));
-        console2.setQuantity(1);
-
-
+        String inputJson = objectMapper.writeValueAsString(console);
 
         mockMvc.perform(post("/consoles")
                         .content(inputJson).contentType(MediaType.APPLICATION_JSON))
@@ -72,15 +49,6 @@ public class ConsoleControllerTests {
     // Testing GET /consoles/{id}
     @Test
     public void shouldReturnConsolebyId() throws Exception {
-
-        Console console = new Console();
-        console.setModel("2");
-        console.setManufacturer("Sony");
-        console.setMemoryAmount("infinite");
-        console.setProcessor("processor");
-        console.setPrice(BigDecimal.valueOf(499.99));
-        console.setQuantity(1);
-        console.setId(1);
 
         mockMvc.perform(get("/consoles/1"))
                 .andDo(print())
@@ -109,7 +77,7 @@ public class ConsoleControllerTests {
         console.setQuantity(1);
         console.setId(1);
 
-        String inputJson = mapper.writeValueAsString(console);
+        String inputJson = objectMapper.writeValueAsString(console);
 
         mockMvc.perform(
                         put("/consoles")
@@ -131,15 +99,6 @@ public class ConsoleControllerTests {
     // Testing GET /consoles/author/{id}
     @Test
     public void getReturnConsoleByManufacturer() throws Exception {
-
-        Console console = new Console();
-        console.setModel("2");
-        console.setManufacturer("Sony");
-        console.setMemoryAmount("infinite");
-        console.setProcessor("processor");
-        console.setPrice(BigDecimal.valueOf(499.99));
-        console.setQuantity(1);
-        console.setId(1);
 
         mockMvc.perform(get("/consoles/manufacturer/Sony"))
                 .andDo(print())

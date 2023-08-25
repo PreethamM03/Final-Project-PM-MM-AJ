@@ -3,44 +3,32 @@ package com.company.gamestore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-//create table console (
-//    console_id int primary key auto_increment,
-//    model varchar(50) not null,
-//    manufacturer varchar(50) not null,
-//    memory_amount varchar(20),
-//    processor varchar(20),
-//    price decimal(5, 2) not null,
-//    quantity int not null
-//);
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "Console")
-public class Console {
+@Table(name = "console")
+public class Console implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "console_id")
-    private int id;
+    private Integer id;
 
     private String model;
 
     private String manufacturer;
 
+    @Column(name = "memory_amount")
     private String memoryAmount;
 
     private String processor;
 
     private BigDecimal price;
 
-    private int quantity;
-
-
-    public int getId() {
-        return id;
-    }
+    private Integer quantity;
 
     public Console(){}
 
@@ -53,7 +41,12 @@ public class Console {
         this.quantity = quantity;
     }
 
-    public void setId(int id) {
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -97,11 +90,11 @@ public class Console {
         this.price = price;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
