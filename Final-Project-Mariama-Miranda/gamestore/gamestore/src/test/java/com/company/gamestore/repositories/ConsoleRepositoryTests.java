@@ -18,8 +18,6 @@ public class ConsoleRepositoryTests {
     @Autowired
     ConsoleRepository consoleRepository;
 
-    private Console console;
-    private Console console2;
 
     @BeforeEach
     public void setUp() throws Exception{
@@ -28,7 +26,7 @@ public class ConsoleRepositoryTests {
 
     @Test
     public void addConsole() {
-        console = new Console();
+        Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
         console.setMemoryAmount("infinite");
@@ -42,7 +40,7 @@ public class ConsoleRepositoryTests {
     }
     @Test
     public void getConsoleById() {
-        console = new Console();
+        Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
         console.setMemoryAmount("infinite");
@@ -56,7 +54,7 @@ public class ConsoleRepositoryTests {
     }
     @Test
     public void getAllConsoles() {
-        console = new Console();
+        Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
         console.setMemoryAmount("infinite");
@@ -65,7 +63,7 @@ public class ConsoleRepositoryTests {
         console.setQuantity(1);
         consoleRepository.save(console);
 
-        console2 = new Console();
+        Console console2 = new Console();
         console2.setModel("2");
         console2.setManufacturer("Sony");
         console2.setMemoryAmount("infinite");
@@ -79,7 +77,7 @@ public class ConsoleRepositoryTests {
 
     @Test
     public void updateConsole() {
-        console = new Console();
+        Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
         console.setMemoryAmount("infinite");
@@ -96,7 +94,7 @@ public class ConsoleRepositoryTests {
     }
     @Test
     public void deleteConsole() {
-        console = new Console();
+        Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
         console.setMemoryAmount("infinite");
@@ -107,13 +105,13 @@ public class ConsoleRepositoryTests {
 
         consoleRepository.deleteById(console.getId());
 
-        Optional author1 = consoleRepository.findById(console.getId());
-        assertFalse(author1.isPresent());
+        Optional console1 = consoleRepository.findById(console.getId());
+        assertFalse(console1.isPresent());
     }
 
     @Test
     public void findConsoleByManufacturer(){
-        console = new Console();
+        Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
         console.setMemoryAmount("infinite");
@@ -122,8 +120,8 @@ public class ConsoleRepositoryTests {
         console.setQuantity(1);
         consoleRepository.save(console);
 
-        List<Console> console1 = consoleRepository.findConsoleByManufacturer(console.getManufacturer());
+        List<Console> consoles = consoleRepository.findConsoleByManufacturer(console.getManufacturer());
 
-        assertEquals(1, console1.size());
+        assertEquals(1, consoles.size());
     }
 }
