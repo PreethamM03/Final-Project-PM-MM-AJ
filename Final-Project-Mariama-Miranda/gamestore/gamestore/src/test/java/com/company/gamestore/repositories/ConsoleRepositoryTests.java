@@ -110,4 +110,20 @@ public class ConsoleRepositoryTests {
         Optional author1 = consoleRepository.findById(console.getId());
         assertFalse(author1.isPresent());
     }
+
+    @Test
+    public void findConsoleByManufacturer(){
+        console = new Console();
+        console.setModel("2");
+        console.setManufacturer("Sony");
+        console.setMemoryAmount("infinite");
+        console.setProcessor("processor");
+        console.setPrice(BigDecimal.valueOf(499.99));
+        console.setQuantity(1);
+        consoleRepository.save(console);
+
+        List<Console> console1 = consoleRepository.findConsoleByManufacturer(console.getManufacturer());
+
+        assertEquals(1, console1.size());
+    }
 }
