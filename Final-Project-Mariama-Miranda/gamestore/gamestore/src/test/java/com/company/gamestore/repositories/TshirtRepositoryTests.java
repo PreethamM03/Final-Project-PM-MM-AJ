@@ -136,10 +136,10 @@ public class TshirtRepositoryTests {
         //Act
         tshirt = tshirtRepository.save(tshirt);
         String color = "Blue";
-        Optional<Tshirt> foundTshirt = tshirtRepository.findByColor(color);
+        List<Tshirt> foundTshirt = tshirtRepository.findByColor(color);
 
         //Assert
-        assertEquals(foundTshirt.get(), tshirt);
+        assertTrue(foundTshirt.contains(tshirt));
     }
 
     @Test
@@ -155,9 +155,9 @@ public class TshirtRepositoryTests {
         //Act
         tshirt = tshirtRepository.save(tshirt);
         String size = "Medium";
-        Optional<Tshirt> foundTshirt = tshirtRepository.findBySize(size);
+        List<Tshirt> foundTshirt = tshirtRepository.findBySize(size);
 
         //Assert
-        assertEquals(foundTshirt.get(), tshirt);
+        assertTrue(foundTshirt.contains(tshirt));
     }
 }

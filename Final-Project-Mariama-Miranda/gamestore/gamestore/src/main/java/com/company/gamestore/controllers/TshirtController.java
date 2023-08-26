@@ -56,15 +56,15 @@ public class TshirtController {
 
     //Get By Color
     @GetMapping("/tshirts/color/{color}")
-    public Optional<Tshirt> getTshirtByColor(@PathVariable String color){
-        Optional<Tshirt> returnedColor = tshirtRepository.findByColor(color);
+    public List<Tshirt> getTshirtByColor(@PathVariable String color){
+        List<Tshirt> returnedColor = tshirtRepository.findByColor(color);
         return returnedColor;
     }
 
     //Get By Size
     @GetMapping("/tshirts/size/{size}")
-    public Optional<Tshirt> getTshirtBySize(@PathVariable String size){
-        Optional<Tshirt> returnedSize = tshirtRepository.findBySize(size);
+    public List<Tshirt> getTshirtBySize(@PathVariable String size){
+        List<Tshirt> returnedSize = tshirtRepository.findBySize(size);
         return returnedSize;
     }
 }
