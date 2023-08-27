@@ -31,7 +31,7 @@ public class GameRepositoryTests {
         game.setTitle("Assassin's Creed Valhalla");
         game.setEsrbRating("Mature");
         game.setDescription("Viking-themed Action RPG");
-        game.setPrice(new BigDecimal("54.99"));
+        game.setPrice(BigDecimal.valueOf(54.99));
         game.setStudio("Ubisoft");
         game.setQuantity(35);
 
@@ -49,7 +49,7 @@ public class GameRepositoryTests {
         game.setTitle("Assassin's Creed Valhalla");
         game.setEsrbRating("Mature");
         game.setDescription("Viking-themed Action RPG");
-        game.setPrice(new BigDecimal("54.99"));
+        game.setPrice(BigDecimal.valueOf(54.99));
         game.setStudio("Ubisoft");
         game.setQuantity(35);
 
@@ -67,7 +67,7 @@ public class GameRepositoryTests {
         game1.setTitle("Assassin's Creed Valhalla");
         game1.setEsrbRating("Mature");
         game1.setDescription("Viking-themed Action RPG");
-        game1.setPrice(new BigDecimal("54.99"));
+        game1.setPrice(BigDecimal.valueOf(54.99));
         game1.setStudio("Ubisoft");
         game1.setQuantity(35);
 
@@ -77,7 +77,7 @@ public class GameRepositoryTests {
         game2.setTitle("FIFA 22");
         game2.setEsrbRating("Everyone");
         game2.setDescription("Sports Simulation");
-        game2.setPrice(new BigDecimal("49.99"));
+        game2.setPrice(BigDecimal.valueOf(49.99));
         game2.setStudio("Electronic Arts");
         game2.setQuantity(40);
 
@@ -94,13 +94,13 @@ public class GameRepositoryTests {
         game.setTitle("Assassin's Creed Valhalla");
         game.setEsrbRating("Mature");
         game.setDescription("Viking-themed Action RPG");
-        game.setPrice(new BigDecimal("54.99"));
+        game.setPrice(BigDecimal.valueOf(54.99));
         game.setStudio("Ubisoft");
         game.setQuantity(35);
 
         gameRepository.save(game);
 
-        game.setPrice(new BigDecimal("70.20"));
+        game.setPrice(BigDecimal.valueOf(70.20));
         game.setQuantity(20);
 
         gameRepository.save(game);
@@ -117,7 +117,7 @@ public class GameRepositoryTests {
         game.setTitle("Assassin's Creed Valhalla");
         game.setEsrbRating("Mature");
         game.setDescription("Viking-themed Action RPG");
-        game.setPrice(new BigDecimal("54.99"));
+        game.setPrice(BigDecimal.valueOf(54.99));
         game.setStudio("Ubisoft");
         game.setQuantity(35);
 
@@ -137,7 +137,7 @@ public class GameRepositoryTests {
         game1.setTitle("Sims 4");
         game1.setEsrbRating("Teen");
         game1.setDescription("Life Simulation");
-        game1.setPrice(new BigDecimal("29.99"));
+        game1.setPrice(BigDecimal.valueOf(29.99));
         game1.setStudio("Electronic Arts");
         game1.setQuantity(35);
 
@@ -147,7 +147,7 @@ public class GameRepositoryTests {
         game2.setTitle("FIFA 22");
         game2.setEsrbRating("Everyone");
         game2.setDescription("Sports Simulation");
-        game2.setPrice(new BigDecimal("49.99"));
+        game2.setPrice(BigDecimal.valueOf(49.99));
         game2.setStudio("Electronic Arts");
         game2.setQuantity(40);
 
@@ -157,7 +157,7 @@ public class GameRepositoryTests {
         game3.setTitle("Cyberpunk 2077");
         game3.setEsrbRating("Mature");
         game3.setDescription("Open-world Sci-Fi RPG");
-        game3.setPrice(new BigDecimal("39.99"));
+        game3.setPrice(BigDecimal.valueOf(39.99));
         game3.setStudio("CD Projekt Red");
         game3.setQuantity(15);
 
@@ -167,7 +167,7 @@ public class GameRepositoryTests {
         game4.setTitle("The Legend of Zelda: Breath of the Wild");
         game4.setEsrbRating("Everyone");
         game4.setDescription("Open-world Adventure");
-        game4.setPrice(new BigDecimal("59.99"));
+        game4.setPrice(BigDecimal.valueOf(59.99));
         game4.setStudio("Nintendo");
         game4.setQuantity(30);
 
@@ -185,7 +185,7 @@ public class GameRepositoryTests {
         game1.setTitle("Sims 4");
         game1.setEsrbRating("Everyone");
         game1.setDescription("Life Simulation");
-        game1.setPrice(new BigDecimal("29.99"));
+        game1.setPrice(BigDecimal.valueOf(29.99));
         game1.setStudio("Electronic Arts");
         game1.setQuantity(35);
 
@@ -195,7 +195,7 @@ public class GameRepositoryTests {
         game2.setTitle("FIFA 22");
         game2.setEsrbRating("Everyone");
         game2.setDescription("Sports Simulation");
-        game2.setPrice(new BigDecimal("49.99"));
+        game2.setPrice(BigDecimal.valueOf(49.99));
         game2.setStudio("Electronic Arts");
         game2.setQuantity(40);
 
@@ -205,7 +205,7 @@ public class GameRepositoryTests {
         game3.setTitle("Cyberpunk 2077");
         game3.setEsrbRating("Mature");
         game3.setDescription("Open-world Sci-Fi RPG");
-        game3.setPrice(new BigDecimal("39.99"));
+        game3.setPrice(BigDecimal.valueOf(39.99));
         game3.setStudio("CD Projekt Red");
         game3.setQuantity(15);
 
@@ -223,7 +223,7 @@ public class GameRepositoryTests {
         game1.setTitle("Sims 4");
         game1.setEsrbRating("Everyone");
         game1.setDescription("Life Simulation");
-        game1.setPrice(new BigDecimal("29.99"));
+        game1.setPrice(BigDecimal.valueOf(29.99));
         game1.setStudio("Electronic Arts");
         game1.setQuantity(35);
 
@@ -233,7 +233,7 @@ public class GameRepositoryTests {
         game2.setTitle("FIFA 22");
         game2.setEsrbRating("Everyone");
         game2.setDescription("Sports Simulation");
-        game2.setPrice(new BigDecimal("49.99"));
+        game2.setPrice(BigDecimal.valueOf(49.99));
         game2.setStudio("Electronic Arts");
         game2.setQuantity(40);
 

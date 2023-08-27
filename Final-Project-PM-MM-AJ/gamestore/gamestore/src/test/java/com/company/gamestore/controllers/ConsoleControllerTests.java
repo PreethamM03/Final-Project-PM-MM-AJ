@@ -34,6 +34,7 @@ public class ConsoleControllerTests {
     // Testing POST /consoles/
     @Test
     public void shouldAddConsoleAndReturnStatusCreated() throws Exception {
+
         Console console = new Console();
         console.setModel("2");
         console.setManufacturer("Sony");
@@ -65,6 +66,7 @@ public class ConsoleControllerTests {
     // Testing GET /consoles/
     @Test
     public void shouldGetAllConsolesAndReturnStatusOK() throws Exception {
+
         mockMvc.perform(
                         get("/consoles"))
                 .andDo(print())
@@ -98,6 +100,7 @@ public class ConsoleControllerTests {
     // Testing DELETE /consoles/{id}
     @Test
     public void shouldDeleteConsoleByIdAndReturnStatusNoContent() throws Exception {
+
         mockMvc.perform(
                         delete("/consoles/1"))
                 .andDo(print())
