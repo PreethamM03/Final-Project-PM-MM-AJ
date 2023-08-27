@@ -2,8 +2,8 @@ type Console {
   id: ID!
   model: String!
   manufacturer: String!
-  memoryAmount: String
-  processor: String
+  memoryAmount: String!
+  processor: String!
   price: Float!
   quantity: Int!
 }
