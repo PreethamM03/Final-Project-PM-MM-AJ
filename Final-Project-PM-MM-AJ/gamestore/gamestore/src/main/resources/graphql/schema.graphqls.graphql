@@ -1,15 +1,40 @@
-type Query {
-  consoles: [Console!]!
-  consoleById(id: ID!): Console
-  consoleByManufacturer(manufacturer: String!): [Console!]!
-}
-
 type Console {
   id: ID!
   model: String!
   manufacturer: String!
-  memoryAmount: String
-  processor: String
-  price: BigDecimal!
+  memoryAmount: String!
+  processor: String!
+  price: Float!
   quantity: Int!
+}
+
+type Game{
+  id: ID!
+  title: String!
+  esrbRating: String!
+  description: String!
+  price: Float!
+  studio: String!
+  quantity: Int!
+}
+
+type Tshirt{
+  id: ID!
+  size: String!
+  color: String!
+  description: String!
+  price: Float!
+  quantity: Int!
+}
+
+type Query {
+  getConsoles: [Console!]!
+  getConsoleByManufacturer(manufacturer: String!): [Console!]!
+  getConsoleById(id: ID!): Console
+
+  getGames: [Game!]!
+  getGameById(id: ID!): Game
+  getGameByTitle(title: String!): Game
+  getGameByEsrbRating(esrbRating: String!): [Game!]!
+  getGameByStudio(studio: String!): [Game!]!
 }
