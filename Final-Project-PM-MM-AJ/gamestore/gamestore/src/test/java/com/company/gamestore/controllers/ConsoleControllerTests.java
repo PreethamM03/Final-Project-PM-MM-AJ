@@ -28,9 +28,6 @@ public class ConsoleControllerTests {
     @MockBean
     private ConsoleRepository consoleRepository;
 
-    @BeforeEach
-    void setup() {}
-
     // Testing POST /consoles/
     @Test
     public void shouldAddConsoleAndReturnStatusCreated() throws Exception {

@@ -32,12 +32,8 @@ public class GraphController {
     //GET Console by ID
     @QueryMapping
     public Console getConsoleById(@Argument Integer id) {
-        Optional<Console> console = consoleRepository.findById(id);
-        if (console.isPresent()) {
-            return console.get();
-        }else {
-            return null;
-        }
+        Optional<Console> returnedConsole = consoleRepository.findById(id);
+        return returnedConsole.orElse(null);
     }
 
     //GET Consoles by Manufacturer
@@ -55,12 +51,8 @@ public class GraphController {
     //GET Game by ID
     @QueryMapping
     public Game getGameById(@Argument Integer id){
-        Optional<Game> game = gameRepository.findById(id);
-        if(game.isPresent()){
-            return game.get();
-        } else{
-            return null;
-        }
+        Optional<Game> returnedGame = gameRepository.findById(id);
+        return returnedGame.orElse(null);
     }
 
     //GET Game by Title

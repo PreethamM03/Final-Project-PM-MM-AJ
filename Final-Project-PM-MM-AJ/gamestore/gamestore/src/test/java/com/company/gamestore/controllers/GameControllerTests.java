@@ -28,9 +28,6 @@ public class GameControllerTests {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    @BeforeEach
-    void setup() {}
-
     // Testing POST /games/
     @Test
     public void shouldAddGameAndReturnStatusCreated() throws Exception {
@@ -92,7 +89,7 @@ public class GameControllerTests {
                                 .content(inputJson)
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isNoContent());   // Created Status should be 204;
+                .andExpect(status().isNoContent());
     }
 
     // Testing DELETE games/{id}
