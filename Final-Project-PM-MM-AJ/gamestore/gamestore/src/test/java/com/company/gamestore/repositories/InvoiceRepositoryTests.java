@@ -169,4 +169,29 @@ public class InvoiceRepositoryTests {
         assertFalse(invoice1.isPresent());
     }
 
+    @Test
+    public void findInvoiceByName() {
+
+        Invoice invoice = new Invoice();
+        invoice.setCity("New York");
+        invoice.setQuantity(2);
+        invoice.setName("name");
+        invoice.setItemId(2);
+        invoice.setItemType("console");
+        invoice.setProcessingFee(BigDecimal.valueOf(.33));
+        invoice.setStreet("1st Street");
+        invoice.setSubtotal(BigDecimal.valueOf(9.99));
+        invoice.setState("VA");
+        invoice.setTotal(BigDecimal.valueOf(10.99));
+        invoice.setTax(BigDecimal.valueOf(.99));
+        invoice.setUnitPrice(BigDecimal.valueOf(8.99));
+        invoice.setZipcode("22222");
+        invoiceRepository.save(invoice);
+
+
+        List<Invoice> invoices = invoiceRepository.findInvoiceByName(invoice.getName());
+
+        assertEquals(invoices.size(), 1);
+    }
+
 }
