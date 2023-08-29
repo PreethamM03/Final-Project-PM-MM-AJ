@@ -1,24 +1,43 @@
 package com.company.gamestore.viewmodel;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class InvoiceViewModel {
-
+//    {
+//        "name": "Customer 1",
+//            "street": "100 Main Street",
+//            "city": "Clovis",
+//            "state": "CA",
+//            "zipcode": "93612",
+//            "itemType": "Game",
+//            "itemId": 269,
+//            "quantity": 12
+//    }
     private int id;
 
+    @NotEmpty
     private String name;
 
+    @NotEmpty
     private String street;
 
+    @NotEmpty
     private String city;
 
+    @NotEmpty
+    @Size(min = 2,max=2)
     private String state;
-
+    @NotEmpty
+    @Size(min = 5,max=5)
     private String zipcode;
 
+    @NotEmpty
     private String itemType;
 
+    @NotEmpty
     private int itemId;
 
     private double unitPrice;
