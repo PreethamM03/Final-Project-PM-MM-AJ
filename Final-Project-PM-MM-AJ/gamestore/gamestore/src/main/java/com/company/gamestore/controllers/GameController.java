@@ -1,40 +1,38 @@
 package com.company.gamestore.controllers;
 
 import com.company.gamestore.models.Game;
-import com.company.gamestore.repositories.GameRepository;
+import com.company.gamestore.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class GameController {
 
     @Autowired
-    GameRepository gameRepository;
+    ServiceLayer serviceLayer;
 
     // A POST route that creates a game
     @PostMapping("/games")
     @ResponseStatus(HttpStatus.CREATED)
     public Game addGame(@RequestBody Game game) {
-        return gameRepository.save(game);
+        return serviceLayer.saveGame(game);
     }
 
     // A GET route that returns a specific game by id
     @GetMapping("/games/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Game getGameById(@PathVariable Integer id) {
-        Optional<Game> returnedGame = gameRepository.findById(id);
-        return returnedGame.orElse(null);
+       return serviceLayer.findGameById(id);
     }
 
     // A GET route that gets all games
     @GetMapping("/games")
     @ResponseStatus(HttpStatus.OK)
     public List<Game> getAllGames() {
-        return gameRepository.findAll();
+        return serviceLayer.findAllGames();
     }
 
 
@@ -42,37 +40,34 @@ public class GameController {
     @PutMapping("/games")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateGame(@RequestBody Game game) {
-        gameRepository.save(game);
+        serviceLayer.updateGame(game);
     }
 
     // A DELETE route that delete by game ID
     @DeleteMapping("/games/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteGameById(@PathVariable Integer id) {
-        gameRepository.deleteById(id);
+        serviceLayer.removeGame(id);
     }
 
     // A GET route that gets games by studio
     @GetMapping("/games/studio/{studio}")
     @ResponseStatus(HttpStatus.OK)
     public List<Game> getGameByStudio(@PathVariable String studio) {
-        List<Game> returnedGames = gameRepository.findGameByStudio(studio);
-        return returnedGames;
+        return serviceLayer.findGameByStudio(studio);
     }
 
     // A GET route that gets games by ESRB Rating
     @GetMapping("/games/ESRB/{esrbRating}")
     @ResponseStatus(HttpStatus.OK)
     public List<Game> getGameByEsrbRating(@PathVariable String esrbRating) {
-        List<Game> returnedGames = gameRepository.findGameByEsrbRating(esrbRating);
-        return returnedGames;
+        return serviceLayer.findGameByEsrbRating(esrbRating);
     }
 
     // A GET route that gets a game by title
     @GetMapping("/games/title/{title}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Game> getGameByTitle(@PathVariable String title) {
-        Optional<Game> returnedGame = gameRepository.findGameByTitle(title);
-        return returnedGame;
+    public Game getGameByTitle(@PathVariable String title) {
+        return serviceLayer.findGameByTitle(title);
     }
 }

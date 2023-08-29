@@ -1,22 +1,12 @@
 package com.company.gamestore.viewmodel;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class InvoiceViewModel {
-//    {
-//        "name": "Customer 1",
-//            "street": "100 Main Street",
-//            "city": "Clovis",
-//            "state": "CA",
-//            "zipcode": "93612",
-//            "itemType": "Game",
-//            "itemId": 269,
-//            "quantity": 12
-//    }
-    private int id;
+
+    private Integer id;
 
     @NotEmpty
     private String name;
@@ -28,10 +18,10 @@ public class InvoiceViewModel {
     private String city;
 
     @NotEmpty
-    @Size(min = 2,max=2)
+    @Size(min = 2, max = 2)
     private String state;
     @NotEmpty
-    @Size(min = 5,max=5)
+    @Size(min = 5, max = 5)
     private String zipcode;
 
     @NotEmpty
@@ -42,6 +32,7 @@ public class InvoiceViewModel {
 
     private double unitPrice;
 
+    //quantity must be 1
     private int quantity;
 
     private double subtotal;
@@ -55,8 +46,7 @@ public class InvoiceViewModel {
     public InvoiceViewModel() {
     }
 
-    public InvoiceViewModel(int id, String name, String street, String city, String state, String zipcode, String itemType, int itemId, double unitPrice, int quantity, double subtotal, double tax, double processingFee, double total) {
-        this.id = id;
+    public InvoiceViewModel(String name, String street, String city, String state, String zipcode, String itemType, int itemId, double unitPrice, int quantity, double subtotal, double tax, double processingFee, double total) {
         this.name = name;
         this.street = street;
         this.city = city;
@@ -76,7 +66,7 @@ public class InvoiceViewModel {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

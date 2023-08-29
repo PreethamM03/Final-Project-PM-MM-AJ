@@ -100,7 +100,6 @@ public class GameRepositoryTests {
 
         gameRepository.save(game);
 
-        game.setPrice(BigDecimal.valueOf(70.20));
         game.setQuantity(20);
 
         gameRepository.save(game);
