@@ -3,7 +3,7 @@ package com.company.gamestore.viewmodel;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -31,13 +31,15 @@ public class InvoiceViewModel {
     @NotEmpty
     private String itemType;
 
-    @NotEmpty
+    @NotNull
     private int itemId;
 
     private BigDecimal unitPrice;
 
-    //quantity must be 1
-    private Integer quantity;
+
+
+    @Positive
+    private int quantity;
 
     private BigDecimal subtotal;
 

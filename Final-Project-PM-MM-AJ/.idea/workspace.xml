@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c702fc18-b51d-45bd-a8ee-4991f4e2b1a6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_16_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gamestore/gamestore/src/test/java/com/company/gamestore/service/ServiceLayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/gamestore/src/main/java/com/company/gamestore/service/ServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/gamestore/src/main/java/com/company/gamestore/service/ServiceLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/gamestore/src/main/java/com/company/gamestore/viewmodel/InvoiceViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/gamestore/src/main/java/com/company/gamestore/viewmodel/InvoiceViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,81 +54,82 @@
     &quot;last_opened_file_path&quot;: &quot;/Users/preethammadesh/Desktop/Netflix Pathways/Final/Final-Project-PM-MM-AJ/Final-Project-PM-MM-AJ&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.InvoiceRepositoryTests.findInvoiceByName">
-    <configuration name="InvoiceRepositoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ServiceLayerTest.calculateInvoiceTotalShouldReturnTotal">
+    <configuration name="ServiceLayerTest.ValidateOrderRequestThrowsIllegalArgumentExceptionForTooLargeQuantity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repositories.*" />
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repositories.InvoiceRepositoryTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InvoiceRepositoryTests.addInvoice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gamestore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repositories.InvoiceRepositoryTests" />
-      <option name="METHOD_NAME" value="addInvoice" />
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.ServiceLayerTest" />
+      <option name="METHOD_NAME" value="ValidateOrderRequestThrowsIllegalArgumentExceptionForTooLargeQuantity" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InvoiceRepositoryTests.deleteInvoice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ServiceLayerTest.ValidateOrderRequestThrowsIllegalArgumentExceptionForWrongItemType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repositories.*" />
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repositories.InvoiceRepositoryTests" />
-      <option name="METHOD_NAME" value="deleteInvoice" />
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.ServiceLayerTest" />
+      <option name="METHOD_NAME" value="ValidateOrderRequestThrowsIllegalArgumentExceptionForWrongItemType" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InvoiceRepositoryTests.findInvoiceByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ServiceLayerTest.ValidateOrderRequestThrowsItemNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repositories.*" />
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repositories.InvoiceRepositoryTests" />
-      <option name="METHOD_NAME" value="findInvoiceByName" />
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.ServiceLayerTest" />
+      <option name="METHOD_NAME" value="ValidateOrderRequestThrowsItemNotFound" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InvoiceRepositoryTests.updateInvoice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ServiceLayerTest.calculateInvoiceTotalShouldReturnTotal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repositories.*" />
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repositories.InvoiceRepositoryTests" />
-      <option name="METHOD_NAME" value="updateInvoice" />
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.ServiceLayerTest" />
+      <option name="METHOD_NAME" value="calculateInvoiceTotalShouldReturnTotal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceLayerTest.validOrderRequestValidatesValidOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.ServiceLayerTest" />
+      <option name="METHOD_NAME" value="validOrderRequestValidatesValidOrder" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.InvoiceRepositoryTests.findInvoiceByName" />
-        <item itemvalue="JUnit.InvoiceRepositoryTests" />
-        <item itemvalue="JUnit.InvoiceRepositoryTests.updateInvoice" />
-        <item itemvalue="JUnit.InvoiceRepositoryTests.deleteInvoice" />
-        <item itemvalue="JUnit.InvoiceRepositoryTests.addInvoice" />
+        <item itemvalue="JUnit.ServiceLayerTest.calculateInvoiceTotalShouldReturnTotal" />
+        <item itemvalue="JUnit.ServiceLayerTest.ValidateOrderRequestThrowsIllegalArgumentExceptionForTooLargeQuantity" />
+        <item itemvalue="JUnit.ServiceLayerTest.ValidateOrderRequestThrowsIllegalArgumentExceptionForWrongItemType" />
+        <item itemvalue="JUnit.ServiceLayerTest.ValidateOrderRequestThrowsItemNotFound" />
+        <item itemvalue="JUnit.ServiceLayerTest.validOrderRequestValidatesValidOrder" />
       </list>
     </recent_temporary>
   </component>

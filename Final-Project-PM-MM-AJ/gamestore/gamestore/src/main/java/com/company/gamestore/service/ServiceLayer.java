@@ -330,6 +330,7 @@ public class ServiceLayer {
             invoice.setTax(tax);
             invoice.setTotal(total);
 
+
             return invoice;
         }
     }
