@@ -1,6 +1,5 @@
 package com.company.gamestore.controllers;
 
-import com.company.gamestore.models.Invoice;
 import com.company.gamestore.service.ServiceLayer;
 import com.company.gamestore.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -8,8 +8,10 @@ import com.company.gamestore.repositories.*;
 import com.company.gamestore.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.webjars.NotFoundException;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +51,7 @@ public class ServiceLayer {
 
         InvoiceViewModel ivm = new InvoiceViewModel();
         ivm.setId(invoice.getId());
+        ivm.setName(invoice.getName());
         ivm.setStreet(invoice.getStreet());
         ivm.setCity(invoice.getCity());
         ivm.setState(invoice.getState());
@@ -56,11 +59,11 @@ public class ServiceLayer {
         ivm.setItemType(invoice.getItemType());
         ivm.setItemId(invoice.getItemId());
         ivm.setQuantity(invoice.getQuantity());
-        ivm.setUnitPrice(ivm.getUnitPrice());
-        ivm.setTax(ivm.getTax());
-        ivm.setSubtotal(ivm.getSubtotal());
-        ivm.setProcessingFee(ivm.getProcessingFee());
-        ivm.setTotal(ivm.getTotal());
+        ivm.setUnitPrice(invoice.getUnitPrice());
+        ivm.setTax(invoice.getTax());
+        ivm.setSubtotal(invoice.getSubtotal());
+        ivm.setProcessingFee(invoice.getProcessingFee());
+        ivm.setTotal(invoice.getTotal());
 
         return ivm;
     }
@@ -68,10 +71,10 @@ public class ServiceLayer {
     @Transactional
     public InvoiceViewModel saveInvoice(InvoiceViewModel viewModel) {
 
-        //business rules
+        validateOrderRequest(viewModel);
 
         Invoice invoice = new Invoice();
-        //invoice.setId(viewModel.getId());
+        invoice.setName(viewModel.getName());
         invoice.setStreet(viewModel.getStreet());
         invoice.setCity(viewModel.getCity());
         invoice.setState(viewModel.getState());
@@ -80,12 +83,15 @@ public class ServiceLayer {
         invoice.setItemId(viewModel.getItemId());
         invoice.setQuantity(viewModel.getQuantity());
 
-        //calculations
-
+        invoice = calculateInvoiceTotal(invoice);
         invoice = invoiceRepository.save(invoice);
-        viewModel.setId(invoice.getId());
 
-        //set view model calculations
+        viewModel.setId(invoice.getId());
+        viewModel.setUnitPrice(invoice.getUnitPrice());
+        viewModel.setSubtotal(invoice.getSubtotal());
+        viewModel.setTax(invoice.getTax());
+        viewModel.setProcessingFee(invoice.getProcessingFee());
+        viewModel.setTotal(invoice.getTotal());
 
         return viewModel;
     }
@@ -223,12 +229,108 @@ public class ServiceLayer {
         return returnedTshirts;
     }
 
-
-    //Order quantity must be less than or equal to the number of items available in the inventory.
-
-    //The order must contain a valid state code.
-
     public void validateOrderRequest(InvoiceViewModel viewModel) {
+
+        String itemType = viewModel.getItemType();
+
+        if (!(itemType.equals("Console") || itemType.equals("Game") || itemType.equals("Tshirt"))) {
+            throw new IllegalArgumentException("The item type is not valid");
+        }
+
+        //Order quantity must be less than or equal to the number of items available in the inventory.
+        if (itemType.equals("Console")) {
+            Optional<Console> console = consoleRepository.findById(viewModel.getItemId());
+
+            if (console.isEmpty()) {
+                throw new NotFoundException("The console ID is not valid");
+            }
+            else {
+                if (viewModel.getQuantity() > console.get().getQuantity()) {
+                    throw new IllegalArgumentException("The requested quantity exceeds the number of available consoles.");
+                }
+            }
+        }
+
+        else if (itemType.equals("Game")) {
+            Optional<Game> game = gameRepository.findById(viewModel.getItemId());
+
+            if (game.isEmpty()) {
+                throw new NotFoundException("The game ID is not valid");
+            }
+            else {
+                if (viewModel.getQuantity() > game.get().getQuantity()) {
+                    throw new IllegalArgumentException("The requested quantity exceeds the number of available games");
+                }
+            }
+        }
+
+        else if (itemType.equals("Tshirt")) {
+            Optional<Tshirt> tshirt = tshirtRepository.findById(viewModel.getItemId());
+
+            if (tshirt.isEmpty()) {
+                throw new NotFoundException("The tshirt ID is not valid");
+            }
+            else {
+                if (viewModel.getQuantity() > tshirt.get().getQuantity()) {
+                    throw new IllegalArgumentException("The requested quantity exceeds the number of available tshirts");
+                }
+            }
+        }
+
+        //The order must contain a valid state code.
+        if (taxRepository.findById(viewModel.getState()).isEmpty()) {
+            throw new NotFoundException("The state is not valid");
+        }
     }
-}
+
+    public Invoice calculateInvoiceTotal(Invoice invoice) {
+        BigDecimal unitPrice = null;
+        String itemType = invoice.getItemType();
+
+        if (itemType.equals("Console")) {
+            Console console = consoleRepository.findById(invoice.getItemId()).get();
+            unitPrice = console.getPrice();
+
+            //update item quantity
+            console.setQuantity(console.getQuantity() - invoice.getQuantity());
+            consoleRepository.save(console);
+        }
+
+        else if (itemType.equals("Game")) {
+            Game game = gameRepository.findById(invoice.getItemId()).get();
+            unitPrice = game.getPrice();
+
+            //update item quantity
+           game.setQuantity(game.getQuantity() - invoice.getQuantity());
+            gameRepository.save(game);
+
+        }
+
+        else if (itemType.equals("Tshirt")) {
+            Tshirt tshirt = tshirtRepository.findById(invoice.getItemId()).get();
+            unitPrice = tshirt.getPrice();
+
+            //update item quantity
+            tshirt.setQuantity(tshirt.getQuantity() - invoice.getQuantity());
+            tshirtRepository.save(tshirt);
+        }
+
+            BigDecimal processingFee = feeRepository.findById(itemType).get().getFee();
+            BigDecimal tax = taxRepository.findById(invoice.getState()).get().getRate();
+            BigDecimal subtotal = unitPrice.multiply(new BigDecimal(invoice.getQuantity()));
+            BigDecimal total = subtotal.add((subtotal.multiply(tax)).add(processingFee));
+
+            if (invoice.getQuantity() > 10) {
+                total = total.add(new BigDecimal("15.49"));
+            }
+
+            invoice.setUnitPrice(unitPrice);
+            invoice.setSubtotal(subtotal);
+            invoice.setProcessingFee(processingFee);
+            invoice.setTax(tax);
+            invoice.setTotal(total);
+
+            return invoice;
+        }
+    }
 

@@ -1,7 +1,11 @@
 package com.company.gamestore.viewmodel;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceViewModel {
@@ -30,23 +34,23 @@ public class InvoiceViewModel {
     @NotEmpty
     private int itemId;
 
-    private double unitPrice;
+    private BigDecimal unitPrice;
 
     //quantity must be 1
-    private int quantity;
+    private Integer quantity;
 
-    private double subtotal;
+    private BigDecimal subtotal;
 
-    private double tax;
+    private BigDecimal tax;
 
-    private double processingFee;
+    private BigDecimal processingFee;
 
-    private double total;
+    private BigDecimal total;
 
     public InvoiceViewModel() {
     }
 
-    public InvoiceViewModel(String name, String street, String city, String state, String zipcode, String itemType, int itemId, double unitPrice, int quantity, double subtotal, double tax, double processingFee, double total) {
+    public InvoiceViewModel(String name, String street, String city, String state, String zipcode, String itemType, int itemId, BigDecimal unitPrice, int quantity, BigDecimal subtotal, BigDecimal tax, BigDecimal processingFee, BigDecimal total) {
         this.name = name;
         this.street = street;
         this.city = city;
@@ -126,11 +130,11 @@ public class InvoiceViewModel {
         this.itemId = itemId;
     }
 
-    public double getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -142,49 +146,49 @@ public class InvoiceViewModel {
         this.quantity = quantity;
     }
 
-    public double getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
-    public double getTax() {
+    public BigDecimal getTax() {
         return tax;
     }
 
-    public void setTax(double tax) {
+    public void setTax(BigDecimal tax) {
         this.tax = tax;
     }
 
-    public double getProcessingFee() {
+    public BigDecimal getProcessingFee() {
         return processingFee;
     }
 
-    public void setProcessingFee(double processingFee) {
+    public void setProcessingFee(BigDecimal processingFee) {
         this.processingFee = processingFee;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof InvoiceViewModel)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         InvoiceViewModel that = (InvoiceViewModel) o;
-        return getId() == that.getId() && getItemId() == that.getItemId() && Double.compare(that.getUnitPrice(), getUnitPrice()) == 0 && getQuantity() == that.getQuantity() && Double.compare(that.getSubtotal(), getSubtotal()) == 0 && Double.compare(that.getTax(), getTax()) == 0 && Double.compare(that.getProcessingFee(), getProcessingFee()) == 0 && Double.compare(that.getTotal(), getTotal()) == 0 && Objects.equals(getName(), that.getName()) && Objects.equals(getStreet(), that.getStreet()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getState(), that.getState()) && Objects.equals(getZipcode(), that.getZipcode()) && Objects.equals(getItemType(), that.getItemType());
+        return itemId == that.itemId && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(street, that.street) && Objects.equals(city, that.city) && Objects.equals(state, that.state) && Objects.equals(zipcode, that.zipcode) && Objects.equals(itemType, that.itemType) && Objects.equals(unitPrice, that.unitPrice) && Objects.equals(quantity, that.quantity) && Objects.equals(subtotal, that.subtotal) && Objects.equals(tax, that.tax) && Objects.equals(processingFee, that.processingFee) && Objects.equals(total, that.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getZipcode(), getItemType(), getItemId(), getUnitPrice(), getQuantity(), getSubtotal(), getTax(), getProcessingFee(), getTotal());
+        return Objects.hash(id, name, street, city, state, zipcode, itemType, itemId, unitPrice, quantity, subtotal, tax, processingFee, total);
     }
 
     @Override
