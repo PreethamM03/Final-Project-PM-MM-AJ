@@ -11,6 +11,3 @@ public class GamestoreApplication {
 	}
 
 }
-
-//string - not empty
-//bigdecimal - not null

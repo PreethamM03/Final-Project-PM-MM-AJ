@@ -130,4 +130,22 @@ public class GameControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void shouldReturn4xxErrorDueToInvalidId() throws Exception{
+        mockMvc.perform(get("/games/id/20000"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void shouldReturn4xxErrorDueToInvalidJson() throws Exception {
+        String invalidJson = "{\"title\": \"The Last of Us Part II\", \"esrbRating\": \"Mature\", \"description\": \"A thrilling action-adventure game.\", \"price\": 59.99,}";
+        mockMvc.perform(
+                        post("/games")
+                                .content(invalidJson)
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
 }

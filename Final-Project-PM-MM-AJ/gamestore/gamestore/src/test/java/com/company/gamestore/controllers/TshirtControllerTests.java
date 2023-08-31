@@ -121,4 +121,24 @@ public class TshirtControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void shouldReturn4xxErrorDueToInvalidId() throws Exception{
+        mockMvc.perform(
+                        get("/tshirts/id/99999"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void shouldReturn4xxErrorDueToInvalidJson() throws Exception {
+        String invalidJson = "{\"size\": \"M\", \"color\": \"Blue\", \"price\": 19.99,}";
+        mockMvc.perform(
+                        post("/tshirts")
+                                .content(invalidJson)
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
 }

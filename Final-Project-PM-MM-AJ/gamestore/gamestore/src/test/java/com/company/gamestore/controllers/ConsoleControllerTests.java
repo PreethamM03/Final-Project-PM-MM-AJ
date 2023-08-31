@@ -106,11 +106,32 @@ public class ConsoleControllerTests {
 
     // Testing GET /consoles/manufacturer/{id}
     @Test
-    public void  shouldGetConsoleByManufacturerAndReturnStatusOk() throws Exception {
+    public void shouldGetConsoleByManufacturerAndReturnStatusOk() throws Exception {
 
         mockMvc.perform(
                         get("/consoles/manufacturer/Sony"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+
+    @Test
+    public void shouldReturn4xxErrorDueToInvalidId() throws Exception{
+        mockMvc.perform(get("/consoles/id/20000"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void shouldReturn4xxErrorDueToInvalidJson() throws Exception {
+        String invalidJson = "{\"model\": \"PS5\", \"manufacturer\": \"Sony\", \"memoryAmount\": 16, \"processor\": \"AMD Ryzen\", \"price\": 399.99,}";
+        mockMvc.perform(
+                        post("/consoles")
+                                .content(invalidJson)
+                                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+
 }
