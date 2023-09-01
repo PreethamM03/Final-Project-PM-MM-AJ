@@ -3,6 +3,8 @@ package com.company.gamestore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -17,17 +19,23 @@ public class Console implements Serializable {
     @Column(name = "console_id")
     private Integer id;
 
+    @NotEmpty
     private String model;
 
+    @NotEmpty
     private String manufacturer;
 
     @Column(name = "memory_amount")
+    @NotEmpty
     private String memoryAmount;
 
+    @NotEmpty
     private String processor;
 
+    @NotNull
     private BigDecimal price;
 
+    @NotNull
     private Integer quantity;
 
     public Console(){}

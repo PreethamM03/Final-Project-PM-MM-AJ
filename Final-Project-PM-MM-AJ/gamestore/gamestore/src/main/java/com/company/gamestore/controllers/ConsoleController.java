@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class ConsoleController {
     // A POST route that creates a console
     @PostMapping("/consoles")
     @ResponseStatus(HttpStatus.CREATED)
-    public Console addConsole(@RequestBody Console console) {
+    public Console addConsole(@RequestBody @Valid Console console) {
         return serviceLayer.saveConsole(console);
     }
 
@@ -36,7 +37,7 @@ public class ConsoleController {
     // A PUT route that updates console
     @PutMapping("/consoles")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateConsole(@RequestBody Console console) {
+    public void updateConsole(@RequestBody @Valid Console console) {
         serviceLayer.updateConsole(console);
     }
 

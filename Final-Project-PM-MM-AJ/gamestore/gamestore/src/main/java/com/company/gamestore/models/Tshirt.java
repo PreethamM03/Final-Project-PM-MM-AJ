@@ -3,6 +3,8 @@ package com.company.gamestore.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -17,14 +19,19 @@ public class Tshirt implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty
     private String size;
 
+    @NotEmpty
     private String color;
 
+    @NotEmpty
     private String description;
 
+    @NotNull
     private BigDecimal price;
 
+    @NotNull
     private int quantity;
 
     public Tshirt(){}

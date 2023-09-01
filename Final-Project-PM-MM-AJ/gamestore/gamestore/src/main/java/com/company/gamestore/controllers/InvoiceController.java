@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class InvoiceController {
     // A POST route that creates an invoice
     @PostMapping("/invoices")
     @ResponseStatus(HttpStatus.CREATED)
-    public InvoiceViewModel addInvoice(@RequestBody InvoiceViewModel invoice) {
+    public InvoiceViewModel addInvoice(@RequestBody @Valid InvoiceViewModel invoice) {
         return serviceLayer.saveInvoice(invoice);
     }
 
